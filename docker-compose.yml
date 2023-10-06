@@ -68,14 +68,15 @@ services:
 
     kafka-consumer:
         build:
-            dockerfile: ./docker/node/Dockerfile
+            context: ./docker/node/
+            dockerfile: Dockerfile
         depends_on:
             - kafka
         volumes:
             - ./kafka-consumer:/usr/src/app
         working_dir: /usr/src/app
         restart: always
-        command: [ "node", "kafka-consumer.js" ]
+        command: [ "/start.sh" ]
 
 volumes:
     mysql-data:

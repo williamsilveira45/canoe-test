@@ -11,55 +11,9 @@ The process in NODE is only used to consume KAFKA messages triggered by LARAVEL 
 
 As I mentioned, I used Docker in the test, in a real environment I believe that Kubernets would be better, but I have already left webservice (nginx), database (mysql), kafka and php fpm in separate containers, I thought about the possibility of implementing the test with PHP Swoole + Laravel Octane would be adding unnecessary complexity just for testing, but it is a good feature for production.
 
+NOTE: There is a filed called database.png where you can check the ER.
+
 # How to run
 `docker-compose up -d`
 
-Wait a few seconds until every container starts probably (30 secs), it will run the migrations and seeds.
-
-# End points
-### Get Fund Lists
-```javascript
-curl --location 'localhost/api/funds' \
---header 'Content-Type: application/json' \
---header 'Accept: application/json'
-```
-
-### Update Fund
-```javascript
-curl --location --request PUT 'localhost/api/funds/9a4cf455-6906-4e87-95d0-fefcf05f1cc4' \
---header 'Content-Type: application/json' \
---header 'Accept: application/json' \
---data '{
-    "name": "New name",
-    "start_year": 1991,
-    "manager_id": "9a4cf455-9b46-47a9-94a4-954119e8006d",
-    "aliases": ["Alias 1", "Alias 2"]
-}'
-```
-
-### Create Fund
-```javascript
-curl --location 'localhost/api/funds' \
---header 'Content-Type: application/json' \
---header 'Accept: application/json' \
---data '{
-    "name": "New name 2",
-    "start_year": 1991,
-    "manager_id": "9a4d0e1d-321f-4ec8-89e2-23392951fe64",
-    "aliases": ["Alias 1", "Alias 2"]
-}'
-```
-
-### Delete Fund
-```javascript
-curl --location --request DELETE 'localhost/api/funds/9a4d1126-251f-48b6-8e66-62f22e69e378' \
---header 'Content-Type: application/json' \
---header 'Accept: application/json'
-```
-
-### Duplicates List
-```javascript
-curl --location 'localhost/api/funds/duplicates' \
---header 'Content-Type: application/json' \
---header 'Accept: application/json'
-```
+Wait a few seconds until every container starts probably, it will run the migrations and seeds, composer install, etc.
