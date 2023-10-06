@@ -1,0 +1,13 @@
+{
+    "name": "kafka-consumer",
+    "version": "1.0.0",
+    "description": "A simple Kafka consumer using Node.js",
+    "main": "kafka-consumer.js",
+    "scripts": {
+        "start": "node kafka-consumer.js"
+    },
+    "dependencies": {
+        "axios": "^1.5.1",
+        "kafka-node": "^5.0.0"
+    }
+}
